@@ -1,26 +1,28 @@
 from flask import Flask, render_template
-from sqlalchemy import create_engine, Column, Integer, String, MetaData
-from sqlalchemy.orm import declarative_base, sessionmaker, Session
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Integer, String, ForeignKey, select
+from sqlalchemy.orm import DeclarativeBase, relationship, mapped_column, Mapped
+
 app = Flask(__name__)
-engine = create_engine("sqlite:///database.db", echo=True)
-base = declarative_base()
 
-metadata = MetaData()
-metadata.reflect(bind=engine)
-print(metadata.tables.keys())
-pizzanames = []
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+db = SQLAlchemy(app)
 
-class pizza(base):
-    __table__ = metadata.tables['pizza']
+
+class Pizza(db.Model):
+    __tablename__ = 'pizza'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    topping = db.Column(db.String)
+
 
 
 @app.route('/')
 def index():
-    with Session(engine) as session:
-        pizzas = session.query(pizza).all()
-        for i in pizzas:
-            pizzanames.append(i.name)
-    return render_template('index.html', pizzanames = pizzanames)
+    pizzas = Pizza.query.all()
+    for pizza in pizzas:
+        print(pizza.name, pizza.id)
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
