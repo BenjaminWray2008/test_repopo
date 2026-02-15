@@ -15,6 +15,9 @@ class Pizza(db.Model):
     name = db.Column(db.String)
     topping = db.Column(db.String)
 
+class User(db.Model):
+
+
 
 
 @app.route('/')
