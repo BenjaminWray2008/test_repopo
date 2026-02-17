@@ -9,13 +9,18 @@
 </div>
 
 <div>
+    
 
     <p>orders</p>
     {% for i in oderings %}
+    <form action="/delete/{{i[2]}}" method="POST">
+<div class="order">
+    <h2>{{i[2]}}: {{i[0]}}, {{i[1]}}</h2> <button type="submit" name="button"></button>
 
-    <h2>{{i[2]}}: {{i[0]}}, {{i[1]}}</h2>
-
+</div>
+  </form>
     {% endfor %}
+  
 
 </div>
 

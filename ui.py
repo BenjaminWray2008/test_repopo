@@ -35,6 +35,12 @@ class Order(db.Model):
     pizza = relationship("Pizza", back_populates="orders")
 
 
+@app.route('/delete/<int:id>', methods=['POST'])
+def delete(id):
+    pass
+    
+
+
 @app.route('/add', methods=['POST'])
 def add():
     cn = False
