@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="site-container">
+  <div class="panel">
+    <h2>Owner Dashboard</h2>
+    <p class="muted">Owner-only actions below.</p>
+    <form method="POST" action="{{ url_for('reset_data') }}" style="margin-top:12px">
+      <button type="submit" class="btn">Reset database to sample data</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,36 +1,38 @@
 
 {% extends 'layout.html' %} {% block content %}
 <div class="main-page">
-<div class="people">
-<p>here are our fellow pizza people:</p>
-{% for i in userss %}
-<h3>{{i}}</h3>
-{% endfor %}
-</div>
+    <div class="panel people-panel">
+        <p>here are our fellow pizza people:</p>
+        <div class="people-list">
+            {% for i in userss %}
+            <h3>{{i}}</h3>
+            {% endfor %}
+        </div>
+    </div>
 
-<div>
-    
+    <div class="panel orders-panel">
+        <p>orders</p>
+        <div class="orders-list">
+            {% for i in oderings %}
+            <form action="/delete/{{i[2]}}" method="POST">
+                <div class="order">
+                    <h2>{{i[2]}}: {{i[0]}}, {{i[1]}}</h2>
+                    <button type="submit" name="button"></button>
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
 
-    <p>orders</p>
-    {% for i in oderings %}
-    <form action="/delete/{{i[2]}}" method="POST">
-<div class="order">
-    <h2>{{i[2]}}: {{i[0]}}, {{i[1]}}</h2> <button type="submit" name="button"></button>
+    <div class="panel pizzas-panel">
+        <p>pizzas:</p>
+        <div class="pizzas-list">
+            {% for i in pzza %}
+            <h2>{{i}}</h2>
+            {% endfor %}
+        </div>
+    </div>
 
-</div>
-  </form>
-    {% endfor %}
-  
-
-</div>
-
-
-<div>
-<p>pizzas:</p>
-{% for i in pzza %}
-<h2>{{i}}</h2>
-{% endfor %}
-</div>
 </div>
 
 

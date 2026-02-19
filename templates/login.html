@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="site-container">
+  <div class="panel" style="max-width:420px;margin:0 auto">
+    <h2>Login</h2>
+    <form method="POST" action="{{ url_for('login') }}">
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+        <input name="name" placeholder="username" type="text" required />
+        <input name="password" placeholder="password" type="password" required />
+        <div style="display:flex;gap:8px">
+          <button type="submit" class="btn">Login</button>
+          <a class="btn btn-outline" href="{{ url_for('register') }}" style="align-self:center">Create account</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

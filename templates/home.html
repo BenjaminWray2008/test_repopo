@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="site-container">
+  <div class="panel center">
+    <h2>Welcome to the Pizza Place</h2>
+    <p class="muted">Order your favorite pie or see existing orders.</p>
+    <div style="margin-top:12px">
+      <a class="btn" href="{{ url_for('index') }}">View Orders</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
