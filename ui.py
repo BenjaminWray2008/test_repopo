@@ -37,7 +37,10 @@ class Order(db.Model):
 
 @app.route('/delete/<int:id>', methods=['POST'])
 def delete(id):
-    pass
+    order = db.session.get(Order, id)
+    db.session.delete(order)
+    db.session.commit()
+    return redirect(url_for('index'))
     
 
 
@@ -56,14 +59,14 @@ def add():
         
     
     if cn:
-        user = db.session.scalar(select(User).where(User.name == names))
+        user = User.query.where(User.name == names).first()
         print(user)
         if not user:
             new_user = User(name=names)
             db.session.add(new_user)
             db.session.commit()
-            user = db.session.scalar(select(User).where(User.name == names))
-        
+            user = User.query.where(User.name == names).first()
+
         print(user.id, nid)
         nO = Order(user_id=user.id, pizza_id=nid)
         db.session.add(nO)
