@@ -1,0 +1,28 @@
+.main-page{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left:10vw;
+    padding-right:10vw;
+}
+
+.header{
+    display:flex;
+    flex-direction: row;
+}
+
+img{
+    padding-left: 5vw;
+}
+
+.order{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    vertical-align: center;
+}
+
+button{
+    width:2vw;
+    height: 2vw;
+}

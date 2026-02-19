@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/style.css')}}"
+    />
+    <title>pizza</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body>
+    <div class="header">
+    <h1>pizzas</h1>
+    <img src="static\images\Cheese.jpg" alt="">
+
+    <div class="add-order">
+        <h1>new order:</h1>
+        <form action="{{url_for('add')}}" method="POST">
+            <input type="text" placeholder="name", name="name">
+            <input type="text" placeholder="type", name="pizza">
+            <button type="submit"></button>
+        
+        </form>
+        
+    </div>
+
+    </div>
+    {% block content %} 
+
+    {% endblock %}
+   </body>
+</html>
